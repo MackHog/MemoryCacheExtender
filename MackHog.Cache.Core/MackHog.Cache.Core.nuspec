@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>MackHog.Cache.Core</id>
+    <version>0.1</version>
+    <title>MackHog.Cache.Core</title>
+    <authors>MackHog</authors>
+    <owners>MackHog</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Extends Microsoft MemoryCache provider</description>
+    <releaseNotes>First release.</releaseNotes>
+    <copyright>Copyright 2018</copyright>
+	<dependencies>
+    <dependency id="Microsoft.Extensions.Caching.Memory" version="2.0.1" />
+   </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\release\netcoreapp2.0\MackHog.Cache.Core.dll" target="lib\netcoreapp2.0"/>
+  </files>
+</package>
