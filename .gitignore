@@ -1,0 +1,15 @@
+# OS X
+.DS_Store
+
+# Nuget
+\packages
+\packages\*
+repositories.config
+
+# VS
+.vs
+[Bb]in/
+[Oo]bj/
+*.user
+
+.axoCover
