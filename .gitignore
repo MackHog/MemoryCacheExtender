@@ -13,3 +13,6 @@ repositories.config
 *.user
 
 .axoCover
+
+
+\MackHog.Cache.Core\nuget.exe

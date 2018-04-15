@@ -7,10 +7,9 @@ namespace MackHog.Cache.Core
 {
     public interface ICache
     {
-        string CacheContentKey { get; }
         ICacheEntry CreateEntry(string key);
         IEnumerable<(string Key, object Value)> GetAll();
-        IEnumerable<string> GetKeys();
+        List<string> GetKeys();
         void Remove(string key);
         bool TryGetValue(string key, out object value);
     }

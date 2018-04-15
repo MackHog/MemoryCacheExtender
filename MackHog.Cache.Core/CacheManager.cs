@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MackHog.Cache.Core
 {
@@ -7,29 +8,26 @@ namespace MackHog.Cache.Core
     {
         public const string ContentKey = "CacheKeys-632d12-a7650e-cd16db2-f2b5e00941-ff5d37c8";
         public static MemoryCache Cache { get; private set; }
-        private readonly CacheKeyManager _cacheKeyManager;
 
         public CacheManager()
         {
             Create();
-            _cacheKeyManager = new CacheKeyManager(Cache);
         }
 
         public static void Create()
         {
             Cache = new MemoryCache(new MemoryCacheOptions());
         }
-
-        public string CacheContentKey => ContentKey;
+        
         public ICacheEntry CreateEntry(string key)
         {
-            _cacheKeyManager.AddKey(key);
+            AddKey(key);
             return Cache.CreateEntry(key);
         }
 
         public void Remove(string key)
         {
-            _cacheKeyManager.RemoveKey(key);
+            RemoveKey(key);
             Cache.Remove(key);
         }
 
@@ -41,7 +39,7 @@ namespace MackHog.Cache.Core
         public IEnumerable<(string Key, object Value)> GetAll()
         {
             var cacheList = new List<(string Key, object Value)>();
-            var currentKeys = _cacheKeyManager.GetKeys();
+            var currentKeys = GetKeys();
             var notFoundKeys = new List<string>();
             foreach (var key in currentKeys)
             {
@@ -50,10 +48,56 @@ namespace MackHog.Cache.Core
                 else
                     notFoundKeys.Add(key);
             }
-            _cacheKeyManager.RemoveKeys(notFoundKeys);
+            RemoveKeys(notFoundKeys);
             return cacheList;
         }
+        
+        public List<string> GetKeys()
+        {
+            if (Cache.TryGetValue(CacheManager.ContentKey, out object objVal))
+            {
+                return (List<string>)objVal;
+            }
+            return new List<string>();
+        }
 
-        public IEnumerable<string> GetKeys() => _cacheKeyManager.GetKeys();
+        private void UpdateKeys(List<string> keys)
+        {
+            using (var item = Cache.CreateEntry(CacheManager.ContentKey))
+            {
+                item.Value = keys;
+            }
+        }
+
+        private void RemoveKey(string key)
+        {
+            var currentKeys = GetKeys();
+            currentKeys.Remove(key);
+            UpdateKeys(currentKeys);
+        }
+
+        private void RemoveKeys(List<string> keys)
+        {
+            if (keys.Any())
+            {
+                var currentKeys = GetKeys();
+                foreach (var key in keys)
+                {
+                    if (currentKeys.Contains(key))
+                        currentKeys.Remove(key);
+                }
+                UpdateKeys(currentKeys);
+            }
+        }
+
+        private void AddKey(string key)
+        {
+            var keys = GetKeys();
+            if (!keys.Contains(key))
+            {
+                keys.Add(key);
+                UpdateKeys(keys);
+            }
+        }
     }
 }
