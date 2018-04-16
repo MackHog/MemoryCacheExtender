@@ -7,9 +7,9 @@ namespace MackHog.Cache.Core
 {
     public interface ICache
     {
-        ICacheEntry CreateEntry(string key);
+        void Add(string key, object value, DateTimeOffset? absoluteExpiration = null, TimeSpan? slidingExpiration = null);
+        void AddMany(IEnumerable<(string Key, object Value, DateTimeOffset? AbsoluteExpiration, TimeSpan? SlidingExpiration)> entries);
         IEnumerable<(string Key, object Value)> GetAll();
-        List<string> GetKeys();
         void Remove(string key);
         bool TryGetValue(string key, out object value);
     }
