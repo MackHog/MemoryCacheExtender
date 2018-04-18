@@ -8,7 +8,7 @@
     <owners>MackHog</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Extends Microsoft MemoryCache to recieve all items in cache</description>
-    <releaseNotes>First release.</releaseNotes>
+    <releaseNotes>Check GitHub repo https://github.com/MackHog/MemoryCacheExtender</releaseNotes>
     <copyright>Copyright 2018</copyright>
 	<dependencies>
     <dependency id="Microsoft.Extensions.Caching.Memory" version="2.0.1" />
