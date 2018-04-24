@@ -44,6 +44,7 @@ namespace MackHog.Cache.Core
                     entry.SlidingExpiration = cacheEntity.SlidingExpiration;
                     entry.Size = cacheEntity.Size;
                 }
+                AddKey(cacheEntity.Key);
             }
 
             public static void AddMany(IEnumerable<CacheEntity> entries)
