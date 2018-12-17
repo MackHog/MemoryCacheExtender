@@ -2,20 +2,21 @@
 <package >
   <metadata>
     <id>MackHog.Cache.Core</id>
-    <version>2.0.3</version>
+    <version>2.1.0</version>
     <title>MackHog.Cache.Core</title>
     <authors>MackHog</authors>
     <owners>MackHog</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Extends Microsoft MemoryCache to recieve all items in cache</description>
     <releaseNotes>Added static methods on the cache provider</releaseNotes>
-	<projectUrl>https://github.com/MackHog/MemoryCacheExtender</projectUrl>
+    <projectUrl>https://github.com/MackHog/MemoryCacheExtender</projectUrl>
+    <licenseUrl>https://raw.githubusercontent.com/MackHog/MemoryCacheExtender/master/LICENSE</licenseUrl>
     <copyright>Copyright 2018</copyright>
-	<dependencies>
-    <dependency id="Microsoft.Extensions.Caching.Memory" version="2.0.1" />
+   <dependencies>
+    <dependency id="Microsoft.Extensions.Caching.Memory" version="2.1.0" />
    </dependencies>
   </metadata>
   <files>
-    <file src="bin\release\netcoreapp2.0\MackHog.Cache.Core.dll" target="lib\netcoreapp2.0"/>
+    <file src="bin\release\netcoreapp2.1\MackHog.Cache.Core.dll" target="lib\netcoreapp2.1"/>
   </files>
 </package>
