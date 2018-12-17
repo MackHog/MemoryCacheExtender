@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MackHog.Cache.Core", "MackHog.Cache.Core\MackHog.Cache.Core.csproj", "{D64128D3-A3D7-4D2F-A816-FCF9A37C0CC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MackHog.Cache.MvcTest", "MackHog.Cache.MvcTest\MackHog.Cache.MvcTest.csproj", "{2BA16647-2703-4C08-BCD3-86B9B7C2AE8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MackHog.Cache.MvcTest", "MackHog.Cache.MvcTest\MackHog.Cache.MvcTest.csproj", "{2BA16647-2703-4C08-BCD3-86B9B7C2AE8F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
